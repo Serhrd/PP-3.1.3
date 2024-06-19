@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Change</title>
+</head>
+<body>
+
+<div>
+<form th:method="PATCH" th:action="@{/admin/update}" th:object="${user}">
+
+                <fieldset>
+                    <legend>Change a user &#128260;</legend>
+                    <label for="id"></label>
+                    <input type="hidden" th:field="*{id}" id="id"/>
+                    <label for="name">Enter your name</label>
+                    <input type="text" th:field="*{name}" id="name"/><br>
+                    <label for="lastName">Enter your last name</label>
+                    <input type="text" th:field="*{lastName}" id="lastName"/><br>
+
+                    <label for="username">Enter your username</label>
+                    <input type="text" th:field="*{username}" id="username"/><br>
+                    <label for="password">Enter your username</label>
+                    <input type="text" th:field="*{password}" id="password"/><br>
+
+                    <label>Change role:
+                    <div th:each="role : ${allRoles}">
+                        <input type="checkbox"
+                               th:name="id"
+                               th:value="${role.roleId}"
+                               th:id="${'role'+role.roleId}" />
+                        <label th:for="${'role'+role.roleId}" th:text="${role.roleName}"></label>
+                    </div>
+                </label>
+                </fieldset>
+    <div class="change">
+        <input type="submit" value="CHANGE"/>
+        <a th:href="@{/admin}">&larr; back </a>
+    </div>
+</form>
+</div>
+</body>
+</html>
+

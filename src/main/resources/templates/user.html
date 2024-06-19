@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+
+<table style="width:100%">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+        <td th:text="${user.id}"/>
+        <td th:text="${user.name}"/>
+        <td th:text="${user.lastName}"/>
+        <td th:each="role: ${user.getRoles()}" th:text="${role.getRoleName().replace('ROLE_', ' ')}"/>
+    </tr>
+    </tbody>
+</table>
+<br>
+<form th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+</br>
+</body>
+</html>
