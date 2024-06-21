@@ -20,15 +20,16 @@
 
                     <label for="username">Enter your username</label>
                     <input type="text" th:field="*{username}" id="username"/><br>
-                    <label for="password">Enter your username</label>
+                    <label for="password">Enter your password</label>
                     <input type="text" th:field="*{password}" id="password"/><br>
 
                     <label>Change role:
-                    <div th:each="role : ${allRoles}">
+                    <div th:each="role : ${allRoles}" th:object="${user}">
                         <input type="checkbox"
                                th:name="id"
                                th:value="${role.roleId}"
-                               th:id="${'role'+role.roleId}" />
+                               th:id="${'role'+role.roleId}"
+                         th:checked=" ${user.roles.contains(role)}"/>
                         <label th:for="${'role'+role.roleId}" th:text="${role.roleName}"></label>
                     </div>
                 </label>
